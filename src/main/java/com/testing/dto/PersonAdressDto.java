@@ -16,7 +16,7 @@ public class PersonAdressDto {
 
     @Id
     private Long id;
-    private Date creationDate;
+    private Date creationDate = new Date();
     private String city;
     private String street;
     private Integer houseNumber;

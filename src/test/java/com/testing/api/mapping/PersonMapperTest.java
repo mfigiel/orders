@@ -5,10 +5,8 @@ import com.testing.dto.PersonDto;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.internal.matchers.Null;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.support.NullValue;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

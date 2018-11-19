@@ -16,7 +16,7 @@ public class PersonDto {
 
     @Id
     private Long id;
-    private Date creationDate;
+    private Date creationDate = new Date();
     private String Name;
     private String Surname;
     private PersonAdressDto adress;

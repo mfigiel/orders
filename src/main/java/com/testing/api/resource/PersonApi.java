@@ -15,9 +15,9 @@ public class PersonApi {
     private Date creationDate;
     @Loggable
     @NonNull
-    private String Name;
+    private String name;
     @Loggable
     @NonNull
-    private String Surname;
-    private PersonAdressApi adress;
+    private String surname;
+    private PersonAdressApi address;
 }
