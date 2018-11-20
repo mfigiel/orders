@@ -19,5 +19,5 @@ public class PersonApi {
     @Loggable
     @NonNull
     private String surname;
-    private PersonAdressApi address;
+    private PersonAddressApi address;
 }

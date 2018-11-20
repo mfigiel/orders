@@ -19,5 +19,5 @@ public class PersonDto {
     private Date creationDate = new Date();
     private String Name;
     private String Surname;
-    private PersonAdressDto adress;
+    private PersonAddressDto address;
 }

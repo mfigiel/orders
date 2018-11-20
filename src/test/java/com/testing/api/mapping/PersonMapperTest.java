@@ -1,5 +1,6 @@
 package com.testing.api.mapping;
 
+import com.testing.api.resource.PersonAddressApi;
 import com.testing.api.resource.PersonApi;
 import com.testing.dto.PersonDto;
 import org.junit.Before;
@@ -25,6 +26,7 @@ public class PersonMapperTest {
     PersonMapper mapper;
     PersonApi personApi = new PersonApi();
     PersonDto personDto = new PersonDto();
+    PersonAddressApi personAddressApi = new PersonAddressApi();
 
     @Before
     public void init() throws ParseException {
@@ -37,6 +39,11 @@ public class PersonMapperTest {
         personDto.setName("Name");
         personDto.setId(1L);
         personDto.setSurname("Surname");
+
+        personAddressApi.setCity("Gliwice");
+        personAddressApi.setHouseNumber(5);
+        personAddressApi.setStreet("Street");
+        personAddressApi.setZipCode("44-100");
     }
 
     @Test
@@ -75,7 +82,7 @@ public class PersonMapperTest {
         assertThat("Invalid mapper result", personDto.getCreationDate().toString(), is("Mon Jul 17 00:00:00 CEST 1989"));
         assertThat("Invalid mapper result", personDto.getName(), is("Name"));
         assertThat("Invalid mapper result", personDto.getSurname(), is("Surname"));
-        assertThat("Invalid mapper result", personDto.getAdress(), is(nullValue()));
+        assertThat("Invalid mapper result", personDto.getAddress(), is(nullValue()));
 
     }
 
@@ -91,6 +98,28 @@ public class PersonMapperTest {
         assertThat("Invalid mapper result", personApiList.get(0).getCreationDate().toString(), is("Mon Jul 17 00:00:00 CEST 1989"));
         assertThat("Invalid mapper result", personApiList.get(0).getName(), is("Name"));
         assertThat("Invalid mapper result", personApiList.get(0).getSurname(), is("Surname"));
+
+    }
+
+    @Test
+    public void testMapToDtoWithConstructorAndAdress() throws ParseException {
+        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+        PersonApi personApi = new PersonApi(date.parse("17/07/1989"), "Name", "Surname", null);
+        personApi.setAddress(personAddressApi);
+        PersonDto personDto = mapper.mapToDto(personApi);
+
+        //then
+        assertThat("Invalid mapper result", personDto, is(notNullValue()));
+        assertThat("Invalid mapper result", personDto.getCreationDate().toString(), is("Mon Jul 17 00:00:00 CEST 1989"));
+        assertThat("Invalid mapper result", personDto.getName(), is("Name"));
+        assertThat("Invalid mapper result", personDto.getSurname(), is("Surname"));
+        assertThat("Invalid mapper result", personDto.getAddress(), is(notNullValue()));
+        assertThat("Invalid mapper result", personDto.getAddress().getCity(), is("Gliwice"));
+        assertThat("Invalid mapper result", personDto.getAddress().getStreet(), is("Street"));
+        assertThat("Invalid mapper result", personDto.getAddress().getZipCode(), is("44-100"));
+        assertThat("Invalid mapper result", personDto.getAddress().getHouseNumber(), is(5));
+        assertThat("Invalid mapper result", personDto.getAddress().getCreationDate(), is(notNullValue()));
+        assertThat("Invalid mapper result", personDto.getAddress().getId(), is(nullValue()));
 
     }
 

@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonAdressApi {
+public class PersonAddressApi {
 
     @NotNull
     @Size(min=2, max=40)

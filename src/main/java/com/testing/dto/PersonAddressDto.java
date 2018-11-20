@@ -12,7 +12,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Entity
-public class PersonAdressDto {
+public class PersonAddressDto {
 
     @Id
     private Long id;

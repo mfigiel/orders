@@ -3,19 +3,21 @@ package com.testing.api.mapping;
 import com.testing.api.resource.PersonApi;
 import com.testing.dto.PersonDto;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class PersonMapper {
 
+    static ModelMapper modelMapper = new ModelMapper();
+
     public static PersonDto mapToDto(PersonApi personApi) {
-        ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(personApi, PersonDto.class);
     }
 
     public static PersonApi mapToPerson(PersonDto personDto) {
-        ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(personDto, PersonApi.class);
     }
 
