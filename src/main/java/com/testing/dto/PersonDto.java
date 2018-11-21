@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -19,5 +18,7 @@ public class PersonDto {
     private Date creationDate = new Date();
     private String Name;
     private String Surname;
+    @OneToOne
+    @JoinColumn(name = "personaddressdto_id", nullable = false)
     private PersonAddressDto address;
 }
