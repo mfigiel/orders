@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class AddressMapper {
 
+    private AddressMapper() {
+        throw new IllegalStateException("Utility class");
+    }
+
     static ModelMapper modelMapper = new ModelMapper();
 
     public static PersonAddressDto mapAdressToDto(PersonAddressApi personAddressApi) {

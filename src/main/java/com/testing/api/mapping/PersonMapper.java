@@ -11,6 +11,10 @@ import java.util.List;
 @Component
 public class PersonMapper {
 
+    private PersonMapper() {
+        throw new IllegalStateException("Utility class");
+    }
+
     static ModelMapper modelMapper = new ModelMapper();
 
     public static PersonDto mapToDto(PersonApi personApi) {

@@ -16,8 +16,8 @@ public class PersonDto {
     @Id
     private Long id;
     private Date creationDate = new Date();
-    private String Name;
-    private String Surname;
+    private String name;
+    private String surname;
     @OneToOne
     @JoinColumn(name = "personaddressdto_id", nullable = false)
     private PersonAddressDto address;
