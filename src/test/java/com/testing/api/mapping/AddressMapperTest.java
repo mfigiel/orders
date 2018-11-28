@@ -13,7 +13,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AdressMapperTest {
+public class AddressMapperTest {
 
     PersonAddressApi personAddressApi = new PersonAddressApi();
     PersonAddressDto personAddressDto = new PersonAddressDto();
@@ -35,7 +35,7 @@ public class AdressMapperTest {
 
     @Test
     public void mapAddressToDto(){
-        PersonAddressDto personAddressDto = AdressMapper.mapAdressToDto(personAddressApi);
+        PersonAddressDto personAddressDto = AddressMapper.mapAdressToDto(personAddressApi);
 
         //then
         assertThat("Invalid mapper result", personAddressDto, is(notNullValue()));
@@ -51,7 +51,7 @@ public class AdressMapperTest {
 
     @Test
     public void mapAdressToApi(){
-        PersonAddressApi personAddressApi = AdressMapper.mapAdressDtoToApi(personAddressDto);
+        PersonAddressApi personAddressApi = AddressMapper.mapAdressDtoToApi(personAddressDto);
 
         //then
         assertThat("Invalid mapper result", personAddressApi, is(notNullValue()));

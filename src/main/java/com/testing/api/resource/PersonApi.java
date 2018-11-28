@@ -1,5 +1,6 @@
 package com.testing.api.resource;
 
+import com.testing.api.validation.AddressValidation;
 import com.testing.logging.Loggable;
 import lombok.*;
 
@@ -19,5 +20,6 @@ public class PersonApi {
     @Loggable
     @NonNull
     private String surname;
+    @AddressValidation
     private PersonAddressApi address;
 }
