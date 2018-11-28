@@ -3,7 +3,9 @@ package com.testing.api.mapping;
 import com.testing.api.resource.PersonAddressApi;
 import com.testing.dto.PersonAddressDto;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AdressMapper {
 
     static ModelMapper modelMapper = new ModelMapper();
