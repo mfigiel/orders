@@ -25,7 +25,7 @@ public class PersonController {
 
     @PostMapping
     public void save() {
-         personRepository.save(mapToDto(new PersonApi(new Date(),"name","surname", null)));
+         personRepository.save(mapToDto(new PersonApi("name","surname", null)));
     }
 
     @Autowired

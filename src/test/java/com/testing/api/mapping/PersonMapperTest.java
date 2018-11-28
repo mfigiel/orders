@@ -28,7 +28,6 @@ public class PersonMapperTest {
     @Before
     public void init() throws ParseException {
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-        personApi.setCreationDate(date.parse("17/07/1989"));
         personApi.setName("Name");
         personApi.setSurname("Surname");
 
@@ -49,7 +48,7 @@ public class PersonMapperTest {
 
         //then
         assertThat("Invalid mapper result", personDto, is(notNullValue()));
-        assertThat("Invalid mapper result", personDto.getCreationDate().toString(), is("Mon Jul 17 00:00:00 CEST 1989"));
+        assertThat("Invalid mapper result", personDto.getCreationDate().toString(), is(notNullValue()));
         assertThat("Invalid mapper result", personDto.getName(), is("Name"));
         assertThat("Invalid mapper result", personDto.getSurname(), is("Surname"));
         assertThat("Invalid mapper result", personDto.getId(), is(nullValue()));
@@ -62,7 +61,6 @@ public class PersonMapperTest {
 
         //then
         assertThat("Invalid mapper result", personApi, is(notNullValue()));
-        assertThat("Invalid mapper result", personApi.getCreationDate().toString(), is("Mon Jul 17 00:00:00 CEST 1989"));
         assertThat("Invalid mapper result", personApi.getName(), is("Name"));
         assertThat("Invalid mapper result", personApi.getSurname(), is("Surname"));
 
@@ -70,13 +68,11 @@ public class PersonMapperTest {
 
     @Test
     public void testMapToDtoWithConstructor() throws ParseException {
-        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-        PersonApi personApi = new PersonApi(date.parse("17/07/1989"), "Name", "Surname",null);
         PersonDto personDto = PersonMapper.mapToDto(personApi);
 
         //then
         assertThat("Invalid mapper result", personDto, is(notNullValue()));
-        assertThat("Invalid mapper result", personDto.getCreationDate().toString(), is("Mon Jul 17 00:00:00 CEST 1989"));
+        assertThat("Invalid mapper result", personDto.getCreationDate().toString(), is(notNullValue()));
         assertThat("Invalid mapper result", personDto.getName(), is("Name"));
         assertThat("Invalid mapper result", personDto.getSurname(), is("Surname"));
         assertThat("Invalid mapper result", personDto.getAddress(), is(nullValue()));
@@ -92,7 +88,6 @@ public class PersonMapperTest {
         //then
         assertThat("Invalid mapper result", personApiList, is(notNullValue()));
         assertThat("Invalid mapper result", personApiList.size(), is(1));
-        assertThat("Invalid mapper result", personApiList.get(0).getCreationDate().toString(), is("Mon Jul 17 00:00:00 CEST 1989"));
         assertThat("Invalid mapper result", personApiList.get(0).getName(), is("Name"));
         assertThat("Invalid mapper result", personApiList.get(0).getSurname(), is("Surname"));
 
@@ -100,14 +95,12 @@ public class PersonMapperTest {
 
     @Test
     public void testMapToDtoWithConstructorAndAdress() throws ParseException {
-        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-        PersonApi personApi = new PersonApi(date.parse("17/07/1989"), "Name", "Surname", null);
         personApi.setAddress(personAddressApi);
         PersonDto personDto = PersonMapper.mapToDto(personApi);
 
         //then
         assertThat("Invalid mapper result", personDto, is(notNullValue()));
-        assertThat("Invalid mapper result", personDto.getCreationDate().toString(), is("Mon Jul 17 00:00:00 CEST 1989"));
+        assertThat("Invalid mapper result", personDto.getCreationDate().toString(), is(notNullValue()));
         assertThat("Invalid mapper result", personDto.getName(), is("Name"));
         assertThat("Invalid mapper result", personDto.getSurname(), is("Surname"));
         assertThat("Invalid mapper result", personDto.getAddress(), is(notNullValue()));

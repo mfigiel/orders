@@ -12,8 +12,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class PersonApi {
 
-    @NonNull
-    private Date creationDate;
     @Loggable
     @NonNull
     private String name;
