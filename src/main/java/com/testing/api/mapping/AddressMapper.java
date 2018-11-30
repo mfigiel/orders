@@ -13,11 +13,11 @@ public class AddressMapper {
 
     static ModelMapper modelMapper = new ModelMapper();
 
-    public static PersonAddressDto mapAdressToDto(PersonAddressApi personAddressApi) {
+    public static PersonAddressDto mapAddressToDto(PersonAddressApi personAddressApi) {
         return personAddressApi != null ? modelMapper.map(personAddressApi, PersonAddressDto.class) : null ;
     }
 
-    public static PersonAddressApi mapAdressDtoToApi(PersonAddressDto personAddressDto) {
+    public static PersonAddressApi mapAddressDtoToApi(PersonAddressDto personAddressDto) {
         return personAddressDto != null ? modelMapper.map(personAddressDto, PersonAddressApi.class) : null;
     }
 }

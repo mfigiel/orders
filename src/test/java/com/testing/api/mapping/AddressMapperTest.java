@@ -35,7 +35,7 @@ public class AddressMapperTest {
 
     @Test
     public void mapAddressToDto(){
-        PersonAddressDto personAddressDto = AddressMapper.mapAdressToDto(personAddressApi);
+        PersonAddressDto personAddressDto = AddressMapper.mapAddressToDto(personAddressApi);
 
         //then
         assertThat("Invalid mapper result", personAddressDto, is(notNullValue()));
@@ -51,7 +51,7 @@ public class AddressMapperTest {
 
     @Test
     public void mapAdressToApi(){
-        PersonAddressApi personAddressApi = AddressMapper.mapAdressDtoToApi(personAddressDto);
+        PersonAddressApi personAddressApi = AddressMapper.mapAddressDtoToApi(personAddressDto);
 
         //then
         assertThat("Invalid mapper result", personAddressApi, is(notNullValue()));
