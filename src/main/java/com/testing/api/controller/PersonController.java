@@ -26,16 +26,16 @@ public class PersonController {
     @RequestMapping(
             value = "/delete",
             method = RequestMethod.GET)
-    public PersonApi delete(@RequestParam String surname) {
-        Long i = personRepository.removeBySurname(surname);
-        return null;
+    public Long delete(@RequestParam String surname) {
+        return personRepository.removeBySurname(surname);
+
     }
 
     @RequestMapping(
             value = "/save",
             method = RequestMethod.POST)
-    public void save(@RequestBody PersonApi personApi) {
-        personRepository.save(mapToDto(personApi));
+    public PersonDto save(@RequestBody PersonApi personApi) {
+        return personRepository.save(mapToDto(personApi));
     }
 
     @Autowired
