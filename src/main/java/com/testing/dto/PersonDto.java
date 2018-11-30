@@ -14,11 +14,16 @@ import java.util.Date;
 public class PersonDto {
 
     @Id
+    @SequenceGenerator(name="person_id_seq",
+            sequenceName="person_id_seq",
+            allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator="person_id_seq")
     private Long id;
     private Date creationDate = new Date();
     private String name;
     private String surname;
     @OneToOne
-    @JoinColumn(name = "personaddressdto_id", nullable = false)
+    @JoinColumn(name = "personaddressdto_id")
     private PersonAddressDto address;
 }
