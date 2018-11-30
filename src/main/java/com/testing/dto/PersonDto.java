@@ -26,4 +26,15 @@ public class PersonDto {
     @OneToOne
     @JoinColumn(name = "personaddressdto_id")
     private PersonAddressDto address;
+
+    @Override
+    public String toString() {
+        return "PersonDto{" +
+                "id=" + id +
+                ", creationDate=" + creationDate +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }

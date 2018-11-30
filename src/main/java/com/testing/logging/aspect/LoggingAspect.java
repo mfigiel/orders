@@ -20,8 +20,8 @@ public class LoggingAspect {
         try {
             result = jp.proceed();
             long executionTime = System.currentTimeMillis() - start;
-            LOGGER.info("{} {} {} took {} milliseconds",
-                    logString(result), jp.getSignature().toShortString(), logString(jp.getArgs()), executionTime);
+            LOGGER.info("{} {} took {} milliseconds",
+                    logString(result), jp.getSignature().toShortString(), executionTime);
 
         } catch (final Throwable ex) {
             final StackTraceElement[] traces = ex.getStackTrace();
@@ -30,11 +30,10 @@ public class LoggingAspect {
                     jp.getSignature().toShortString(), ex.getClass().getSimpleName(),
                     (System.currentTimeMillis() - start));
         }
-        System.out.println("aspect działa");
         return result;
     }
 
     private String logString(Object result) {
-        return "NotImplemented";
+        return String.format("The result was: %s", result != null ? result.toString() : "NULL");
     }
 }

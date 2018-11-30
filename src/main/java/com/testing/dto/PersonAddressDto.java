@@ -21,4 +21,17 @@ public class PersonAddressDto {
     private Integer houseNumber;
     private Integer flatNumber;
     private String zipCode;
+
+    @Override
+    public String toString() {
+        return "PersonAddressDto{" +
+                "id=" + id +
+                ", creationDate=" + creationDate +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", houseNumber=" + houseNumber +
+                ", flatNumber=" + flatNumber +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
 }

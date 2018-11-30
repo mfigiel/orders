@@ -20,4 +20,13 @@ public class PersonApi {
     private String surname;
     @AddressValidation
     private PersonAddressApi address;
+
+    @Override
+    public String toString() {
+        return "PersonApi{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }

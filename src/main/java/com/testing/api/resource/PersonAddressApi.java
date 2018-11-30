@@ -21,4 +21,15 @@ public class PersonAddressApi {
     private Integer flatNumber;
     @NonNull
     private String zipCode;
+
+    @Override
+    public String toString() {
+        return "PersonAddressApi{" +
+                "city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", houseNumber=" + houseNumber +
+                ", flatNumber=" + flatNumber +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
 }
