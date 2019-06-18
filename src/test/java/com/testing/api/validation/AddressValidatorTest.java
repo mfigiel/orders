@@ -6,30 +6,32 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import javax.validation.ConstraintValidatorContext;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
-public class AddressValidatorTest {
+@RunWith(JUnitPlatform.class)
+class AddressValidatorTest {
 
     private ConstraintValidatorContext constraintValidatorContext;
 
     private AddressValidator validator;
 
     @BeforeEach
-    public void init() {
+    void init() {
         constraintValidatorContext = Mockito.mock(ConstraintValidatorContext.class);
         validator = Mockito.spy(AddressValidator.class);
         doNothing().when(validator).buildConstraint(any(), anyString());
     }
 
     @Test
-    public void testOK_correctData() {
+    void testOK_correctData() {
         // for
         PersonAddressApi personAddressApi = new PersonAddressApi();
         personAddressApi.setCity("City");
@@ -40,6 +42,47 @@ public class AddressValidatorTest {
         boolean result = validator.isValid(personAddressApi, constraintValidatorContext);
 
         // then
-        assertThat(result).isTrue();
+        assertThat(result,is(true));
+    }
+
+    @Test
+    void testFalse_cityNull() {
+        // for
+        PersonAddressApi personAddressApi = new PersonAddressApi();
+        personAddressApi.setStreet("Street");
+        personAddressApi.setZipCode("44-100");
+
+        // when
+        boolean result = validator.isValid(personAddressApi, constraintValidatorContext);
+
+        // then
+        assertThat(result,is(false));
+    }
+
+    @Test
+    void testFalse_allIsEmpty() {
+        // for
+        PersonAddressApi personAddressApi = new PersonAddressApi();
+        personAddressApi.setCity("");
+        personAddressApi.setStreet("");
+        personAddressApi.setZipCode("");
+
+        // when
+        boolean result = validator.isValid(personAddressApi, constraintValidatorContext);
+
+        // then
+        assertThat(result,is(false));
+    }
+
+    @Test
+    void testFalse_allIsNull() {
+        // for
+        PersonAddressApi personAddressApi = new PersonAddressApi();
+
+        // when
+        boolean result = validator.isValid(personAddressApi, constraintValidatorContext);
+
+        // then
+        assertThat(result,is(false));
     }
 }

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Component;
 
 public class AddressMapper {
 
-    private AddressMapper() {
-        throw new IllegalStateException("Utility class");
-    }
+    private AddressMapper() {}
 
     static ModelMapper modelMapper = new ModelMapper();
 

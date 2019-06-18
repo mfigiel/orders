@@ -28,7 +28,7 @@ public class LoggingAspectTest {
         doReturn(new Object()).when(joinPoint).proceed();
         doReturn(signature).when(joinPoint).getSignature();
         Object[] args = {"test1", "test2"};
-        doReturn(args).when(joinPoint).getArgs();
+//        doReturn(args).when(joinPoint).getArgs();
 
         //when
         Object o = loggingAspect.log(joinPoint);

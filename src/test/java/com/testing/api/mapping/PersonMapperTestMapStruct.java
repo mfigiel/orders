@@ -6,6 +6,7 @@ import com.testing.dto.PersonDto;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mapstruct.factory.Mappers;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.text.ParseException;
@@ -19,7 +20,10 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PersonMapperTest {
+public class PersonMapperTestMapStruct {
+
+    private PersonApiPersonDtoMapper mapper
+            = Mappers.getMapper(PersonApiPersonDtoMapper.class);
 
     PersonApi personApi = new PersonApi();
     PersonDto personDto = new PersonDto();
@@ -44,7 +48,8 @@ public class PersonMapperTest {
 
     @Test
     public void testMapToDto() {
-        PersonDto personDto = PersonMapper.mapToDto(personApi);
+
+        PersonDto personDto = mapper.personApiToPersonDto(personApi);
 
         //then
         assertThat("Invalid mapper result", personDto, is(notNullValue()));
@@ -57,7 +62,7 @@ public class PersonMapperTest {
 
     @Test
     public void testMapToApi() {
-        PersonApi personApi = PersonMapper.mapToPerson(personDto);
+        PersonApi personApi = mapper.personDtoToPersonApi(personDto);
 
         //then
         assertThat("Invalid mapper result", personApi, is(notNullValue()));
@@ -69,8 +74,8 @@ public class PersonMapperTest {
     }
 
     @Test
-    public void testMapToDtoWithConstructor() throws ParseException {
-        PersonDto personDto = PersonMapper.mapToDto(personApi);
+    public void testMapToDtoWithConstructor() {
+        PersonDto personDto = mapper.personApiToPersonDto(personApi);
 
         //then
         assertThat("Invalid mapper result", personDto, is(notNullValue()));
@@ -87,7 +92,7 @@ public class PersonMapperTest {
     public void testMapToDtoList() {
         List<PersonDto> personDtoList = new ArrayList<>();
         personDtoList.add(personDto);
-        List<PersonApi> personApiList = PersonMapper.mapToListOfPersons(personDtoList);
+        List<PersonApi> personApiList = mapper.personDtoListToPersonApiList(personDtoList);
 
         //then
         assertThat("Invalid mapper result", personApiList, is(notNullValue()));
@@ -98,10 +103,9 @@ public class PersonMapperTest {
     }
 
     @Test
-    public void testMapToDtoWithConstructorAndAdress() throws ParseException {
+    public void testMapToDtoWithConstructorAndAdress() {
         personApi.setAddress(personAddressApi);
-        PersonDto personDto = PersonMapper.mapToDto(personApi);
-
+        PersonDto personDto = mapper.personApiToPersonDto(personApi);
         //then
         assertThat("Invalid mapper result", personDto, is(notNullValue()));
         assertThat("Invalid mapper result", personDto.getCreationDate().toString(), is(notNullValue()));

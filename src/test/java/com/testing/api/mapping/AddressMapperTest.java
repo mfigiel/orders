@@ -7,10 +7,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
+
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddressMapperTest {
@@ -46,11 +52,13 @@ public class AddressMapperTest {
         assertThat("Invalid mapper result", personAddressDto.getZipCode(), is("44-100"));
         assertThat("Invalid mapper result", personAddressDto.getHouseNumber(), is(5));
         assertThat("Invalid mapper result", personAddressDto.getId(), is(nullValue()));
+        assertThat("Invalid mapper result", personAddressDto.toString(),
+                is("PersonAddressDto{id=null, creationDate="+personAddressDto.getCreationDate().toString()+", city='Gliwice', street='Street', houseNumber=5, flatNumber=4, zipCode='44-100'}"));
     }
 
 
     @Test
-    public void mapAdressToApi(){
+    public void mapAdressToApi() {
         PersonAddressApi personAddressApi = AddressMapper.mapAddressDtoToApi(personAddressDto);
 
         //then
@@ -60,6 +68,7 @@ public class AddressMapperTest {
         assertThat("Invalid mapper result", personAddressApi.getStreet(), is("Street"));
         assertThat("Invalid mapper result", personAddressApi.getZipCode(), is("44-100"));
         assertThat("Invalid mapper result", personAddressApi.getHouseNumber(), is(5));
+        assertThat("Invalid mapper result", personAddressApi.toString(),
+                is("PersonAddressApi{city='Gliwice', street='Street', houseNumber=5, flatNumber=4, zipCode='44-100'}"));
     }
-
 }

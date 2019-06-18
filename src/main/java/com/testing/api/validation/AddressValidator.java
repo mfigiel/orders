@@ -15,7 +15,7 @@ public class AddressValidator implements ConstraintValidator<AddressValidation, 
     }
 
     private boolean isNotNullAndNotEmpty(String field) {
-        return field != null && field.isEmpty();
+        return field != null && !field.isEmpty();
     }
 
     void buildConstraint(ConstraintValidatorContext context, String message) {
