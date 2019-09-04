@@ -10,6 +10,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -40,6 +43,13 @@ public class AddressMapperTest {
     }
 
     @Test
+    public void lambda(){
+        List<String> names = Arrays.asList("bard", "la", "of", "bank");
+            Collections.sort(names, (s1, s2) -> s1.compareToIgnoreCase(s2));
+            names.forEach(arg -> System.out.println(arg));
+    }
+
+    @Test
     public void mapAddressToDto(){
         PersonAddressDto personAddressDto = AddressMapper.mapAddressToDto(personAddressApi);
 
@@ -55,7 +65,6 @@ public class AddressMapperTest {
         assertThat("Invalid mapper result", personAddressDto.toString(),
                 is("PersonAddressDto{id=null, creationDate="+personAddressDto.getCreationDate().toString()+", city='Gliwice', street='Street', houseNumber=5, flatNumber=4, zipCode='44-100'}"));
     }
-
 
     @Test
     public void mapAdressToApi() {

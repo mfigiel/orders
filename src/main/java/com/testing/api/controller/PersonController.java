@@ -4,7 +4,10 @@ import com.testing.dto.PersonDto;
 import com.testing.repository.PersonRepository;
 import com.testing.api.resource.PersonApi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import static com.testing.api.mapping.PersonMapper.mapToDto;
 import static com.testing.api.mapping.PersonMapper.mapToPerson;
@@ -13,8 +16,17 @@ import static com.testing.api.mapping.PersonMapper.mapToPerson;
 @RequestMapping("/Person")
 public class PersonController {
 
+    @Value("${spring.application.name}")
+    String appName;
+
     private PersonRepository personRepository;
 
+
+    @GetMapping("/home")
+    public String homePage(Model model) {
+        model.addAttribute("appName", "dsad");
+        return "home";
+    }
 
     @RequestMapping(
             value = "/get",

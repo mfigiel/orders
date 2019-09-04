@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "PersonApiPersonDtoMapper")
 public interface PersonApiPersonDtoMapper {
     PersonApi personDtoToPersonApi(PersonDto source);
     PersonDto personApiToPersonDto(PersonApi source);
