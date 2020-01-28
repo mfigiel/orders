@@ -1,9 +1,9 @@
 package com.testing.repository;
 
-import com.testing.repository.entity.Product;
+import com.testing.repository.entity.Order;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends CrudRepository<Product, Long> {
+public interface OrderRepository extends CrudRepository<Order, Long> {
 }
