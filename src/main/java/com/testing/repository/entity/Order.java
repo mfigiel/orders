@@ -1,6 +1,5 @@
 package com.testing.repository.entity;
 
-import com.testing.dto.Client;
 import com.testing.repository.converter.StringListConverter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
