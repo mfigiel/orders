@@ -3,9 +3,11 @@ package com.testing.services;
 import com.testing.api.mapping.OrderApiOrderMapperImpl;
 import com.testing.api.resource.OrderApi;
 import com.testing.repository.OrderRepository;
+import com.testing.repository.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +28,9 @@ public class OrderService {
     }
 
     public OrderApi getOrder(long id) {
-        Optional<OrderApi> order = Optional.ofNullable(orderApiOrderMapper.orderDtoToOrderApi(orderRepository.findById(id)));
-        return order.get();
+        Optional<Order> order = Optional.ofNullable(orderRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("order id: " + id)));
+
+        return orderApiOrderMapper.orderDtoToOrderApi(order.get());
     }
 }

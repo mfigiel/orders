@@ -19,7 +19,7 @@ public class SwaggerConfig {
     public Docket documentApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.testing.api"))
+                .apis(RequestHandlerSelectors.basePackage("com.testing.com.testing.api"))
                 .build()
                 .apiInfo(apiInfo());
     }
@@ -37,7 +37,7 @@ public class SwaggerConfig {
         );
     }
 
-    static final String[] SWAGGER_RESOURCES_URLS = {"/v2/api-docs",
+    static final String[] SWAGGER_RESOURCES_URLS = {"/v2/com.testing.api-docs",
             "/swagger-resources",
             "/swagger-resources/configuration/security",
             "/swagger-ui.html",
