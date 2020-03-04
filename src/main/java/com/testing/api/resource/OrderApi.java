@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderApi {
 
-    private long id;
+    private Long id;
 
     private List<String> products;
 
