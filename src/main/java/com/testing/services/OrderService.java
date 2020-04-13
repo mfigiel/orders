@@ -1,5 +1,6 @@
 package com.testing.services;
 
+import com.testing.api.mapping.OrderApiOrderMapper;
 import com.testing.api.mapping.OrderApiOrderMapperImpl;
 import com.testing.api.resource.OrderApi;
 import com.testing.repository.OrderRepository;
@@ -16,8 +17,8 @@ public class OrderService {
 
     @Autowired
     OrderRepository orderRepository;
-
-    OrderApiOrderMapperImpl orderApiOrderMapper = new OrderApiOrderMapperImpl();
+    @Autowired
+    OrderApiOrderMapper orderApiOrderMapper;
 
     public List<OrderApi> getOrders() {
         return (List) orderRepository.findAll();

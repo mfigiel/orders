@@ -2,17 +2,17 @@ package com.testing.api.controller;
 
 import com.testing.api.resource.OrderApi;
 import com.testing.services.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping
+@RequiredArgsConstructor
 public class OrderController {
 
-    @Autowired
-    OrderService orderService;
+    private final OrderService orderService;
 
     @GetMapping("/orders")
     public List<OrderApi> getOrders() {
