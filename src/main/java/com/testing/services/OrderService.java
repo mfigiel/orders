@@ -23,8 +23,10 @@ public class OrderService {
         return (List) orderRepository.findAll();
     }
 
-    public void addOrder(OrderApi order) {
-        orderRepository.save(orderApiOrderMapper.orderApiToOrderDto(order));
+    public OrderApi addOrder(OrderApi order) {
+        Order orderToSave = orderApiOrderMapper.orderApiToOrderDto(order);
+        orderToSave = orderRepository.save(orderToSave);
+        return orderApiOrderMapper.orderDtoToOrderApi(orderToSave);
     }
 
     public OrderApi getOrder(long id) {

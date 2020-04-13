@@ -20,8 +20,8 @@ public class OrderController {
     }
 
     @PostMapping("/orders")
-    public void addOrder(@RequestBody OrderApi order) {
-        orderService.addOrder(order);
+    public OrderApi addOrder(@RequestBody OrderApi order) {
+        return orderService.addOrder(order);
     }
 
     @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)

@@ -41,7 +41,7 @@ public class OrderServiceClass {
     @Before
     public void setUp() {
         Order order = new Order();
-        order.setId(1);
+        order.setId((long) 1);
         order.setClientId(2);
 
         Mockito.when(orderRepository.findById((long) 1))
@@ -50,7 +50,7 @@ public class OrderServiceClass {
         List<Order> orderList = new ArrayList<>();
 
         Order orderSecond = new Order();
-        orderSecond.setId(2);
+        orderSecond.setId((long) 2);
         orderList.add(orderSecond);
         Mockito.when(orderRepository.findAll())
                 .thenReturn(orderList);
