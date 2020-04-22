@@ -60,11 +60,6 @@ public class OrderServiceClass {
     public void getOneOrder() {
         OrderApi found = orderService.getOrder(1);
 
-        Boolean a = null;
-        if(Optional.ofNullable(a).orElse(false)) {
-            String b="";
-        }
-
         assertThat(found.getClientId())
                 .isEqualTo(2);
         assertThat(found.getId())

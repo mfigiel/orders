@@ -60,11 +60,9 @@ public class OrderControllerTest {
     @Test
     public void getOrder() {
         // act
-
         Order order = getTestOrder(1);
 
         orderRepository.save(order);
-
         OrderApi orderFromDb = testRestTemplate.getForObject(HTTP_LOCALHOST + port + "/order/1", OrderApi.class);
 
         assertEquals(orderFromDb.getId(), 1);
@@ -76,11 +74,10 @@ public class OrderControllerTest {
     @Test
     public void getOrders() {
         // act
-
         orderRepository.save(getTestOrder(1));
         orderRepository.save(getTestOrder(2));
 
-        ResponseEntity<List<OrderApi>> orderFromDb = testRestTemplate.exchange(HTTP_LOCALHOST + port + "/orders",  HttpMethod.GET, null, new ParameterizedTypeReference<List<OrderApi>>() {
+        ResponseEntity<List<OrderApi>> orderFromDb = testRestTemplate.exchange(HTTP_LOCALHOST + port + "/orders", HttpMethod.GET, null, new ParameterizedTypeReference<List<OrderApi>>() {
         });
 
         // assert
@@ -106,8 +103,8 @@ public class OrderControllerTest {
 
 
         Optional<Order> orderFromDbOptional = orderRepository.findById(1L);
-
         Order orderFromDb = orderFromDbOptional.get();
+
         // assert
         assertEquals(orderFromDb.getId(), 1);
         assertEquals(orderFromDb.getClientId(), 2);
