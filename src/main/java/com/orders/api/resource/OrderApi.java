@@ -13,10 +13,7 @@ import java.util.List;
 public class OrderApi {
 
     private Long id;
-
     private List<String> products;
-
     private Integer clientId;
-
     private Date orderDate;
 }

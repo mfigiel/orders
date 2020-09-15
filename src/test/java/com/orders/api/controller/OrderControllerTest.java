@@ -48,8 +48,7 @@ public class OrderControllerTest {
 
     @Test
     public void getOrder_NoResults() throws Exception {
-        mockMvc
-                .perform(get("/order", 1)
+        mockMvc.perform(get("/order", 1)
                         .param("id", "1"))
                 .andExpect(status().is4xxClientError());
 

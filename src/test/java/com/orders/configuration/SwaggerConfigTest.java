@@ -1,6 +1,5 @@
-package com.orders.conguration;
+package com.orders.configuration;
 
-import com.orders.configuration.SwaggerConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
