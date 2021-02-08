@@ -26,7 +26,7 @@ public class OrderController {
 
     @GetMapping(value = "/order/{id}")
     public OrderApi getOrderInformation(@PathVariable("id") Long id) {
-        return orderService.getOrder(id);
+        return orderService.getOrderApi(id);
     }
 
 }

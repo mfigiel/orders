@@ -58,7 +58,7 @@ public class OrderServiceClass {
 
     @Test
     public void getOneOrder() {
-        OrderApi found = orderService.getOrder(1);
+        OrderApi found = orderService.getOrderApi(1);
 
         assertThat(found.getClientId())
                 .isEqualTo(2);

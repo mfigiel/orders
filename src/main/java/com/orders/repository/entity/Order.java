@@ -1,18 +1,15 @@
 package com.orders.repository.entity;
 
+import com.orders.api.resource.OrderStates;
 import com.orders.repository.converter.StringListConverter;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Orders")
@@ -29,4 +26,9 @@ public class Order {
 
     private Date orderDate;
 
+    private String state = String.valueOf(OrderStates.SUBMITTED);
+
+    public void setState(OrderStates state) {
+        this.state = String.valueOf(state);
+    }
 }

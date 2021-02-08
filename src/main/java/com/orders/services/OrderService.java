@@ -29,10 +29,18 @@ public class OrderService {
         return orderApiOrderMapper.orderDtoToOrderApi(orderToSave);
     }
 
-    public OrderApi getOrder(long id) {
-        Optional<Order> order = Optional.ofNullable(orderRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("order id: " + id)));
-
-        return orderApiOrderMapper.orderDtoToOrderApi(order.get());
+    public OrderApi getOrderApi(long id) {
+        return orderApiOrderMapper.orderDtoToOrderApi(getOrder(id));
     }
+
+    private Order getOrder(long id) {
+        return Optional.ofNullable(orderRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("order id: " + id))).get();
+    }
+
+    public String getOrderState(long id) {
+        return getOrder(id).getState();
+    }
+
+
 }
