@@ -39,7 +39,11 @@ public class OrderService {
     }
 
     public String getOrderState(long id) {
-        return getOrder(id).getState();
+        try {
+            return getOrder(id).getState();
+        } catch (EntityNotFoundException e) {
+            return "order not found";
+        }
     }
 
 

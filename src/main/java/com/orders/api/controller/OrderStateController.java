@@ -4,6 +4,7 @@ import com.orders.api.resource.UpdateStateOrderApi;
 import com.orders.services.OrderService;
 import com.orders.services.OrderStateService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,7 +21,7 @@ public class OrderStateController {
     }
 
     @GetMapping(value = "orderState/order/{id}")
-    public String getOrderState(@PathVariable("id") Long id) {
-        return orderService.getOrderState(id);
+    public ResponseEntity<String> getOrderState(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(orderService.getOrderState(id));
     }
 }
