@@ -28,7 +28,7 @@ public class OrderStateService {
     private static final String PAY = "pay";
     private static final String CANCEL = "cancel";
     private final OrderRepository orderRepository;
-    private final StateMachineFactory<OrderStates, OrderEvents> factory_config;
+    private final StateMachineFactory<OrderStates, OrderEvents> factoryConfig;
 
     public void updateState(UpdateStateOrderApi updateStateOrderApi) {
         final String orderState = updateStateOrderApi.getOrderState();
@@ -80,7 +80,7 @@ public class OrderStateService {
 
     private StateMachine<OrderStates, OrderEvents> build(Long orderId) {
         Optional<Order> order = orderRepository.findById(orderId);
-        StateMachine<OrderStates, OrderEvents> sm = this.factory_config.getStateMachine(String.valueOf(orderId));
+        StateMachine<OrderStates, OrderEvents> sm = this.factoryConfig.getStateMachine(String.valueOf(orderId));
         sm.stop();
 
         sm.getStateMachineAccessor()

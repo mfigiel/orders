@@ -54,18 +54,6 @@ public class SimpleEnumStateMachineConfiguration extends StateMachineConfigurerA
                 .end(OrderStates.CANCELLED);
     }
 
-//    private Action<String, String> countNumbersOfInvokeStatePaid() {
-//        return ctx -> {
-//            int approvals = (int) ctx.getExtendedState().getVariables()
-//                    .getOrDefault("counter", 0);
-//            approvals++;
-//            ctx.getExtendedState().getVariables()
-//                    .put("counter", approvals);
-//
-//            System.out.println("counter " + approvals);
-//        };
-//    }
-
     @Override
     public void configure(StateMachineConfigurationConfigurer<OrderStates, OrderEvents> config) throws Exception {
         StateMachineListenerAdapter<OrderStates, OrderEvents> adapter = new StateMachineListenerAdapter<OrderStates, OrderEvents>() {

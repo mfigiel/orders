@@ -24,8 +24,6 @@ public class LoggingAspect {
                     logString(result), jp.getSignature().toShortString(), executionTime);
 
         } catch (final Throwable ex) {
-            final StackTraceElement[] traces = ex.getStackTrace();
-
             LOGGER.info("{} threw {} took {} milliseconds",
                     jp.getSignature().toShortString(), ex.getClass().getSimpleName(),
                     (System.currentTimeMillis() - start));
