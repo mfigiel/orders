@@ -1,0 +1,16 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: orders
+logging:
+  level:
+    org:
+      hibernate:
+        sql: DEBUG
+        type: TRACE
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_HOST:${HOST:localhost}}:${DISCOVERY_PORT:8761}/eureka/
+
